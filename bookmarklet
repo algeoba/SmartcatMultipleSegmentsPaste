@@ -1,0 +1,1 @@
+javascript:(function(){navigator.clipboard.readText().then(clipboardText=>{clipboardArray=clipboardText.split(/[\r\n]+/g);for(i=0;i<clipboardArray.length;i++){statement='document.activeElement.closest("tbody")'+'.nextElementSibling'.repeat(i)+'.getElementsByClassName("l-content-editor__view l-content-editor__view_editor")[1].innerText=clipboardArray[i]';eval(statement);}})})();
