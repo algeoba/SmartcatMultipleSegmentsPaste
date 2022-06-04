@@ -1,6 +1,6 @@
 # SmartcatMultipleSegmentsPaste
 
-To paste the clipboard content (multiple paragraphs or table cells) into multiple segments in Smartcat interface, create a bookmark in your Web browser (I've tested in Chrome only), enter any name you want.
+To paste the clipboard content (multiple paragraphs or table cells) into multiple segments in Smartcat interface, create a bookmark in your Web browser (I've tested in Chrome only); enter any name for it.
 
 In URI field, enter the following code:
 
