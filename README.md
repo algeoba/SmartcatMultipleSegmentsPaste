@@ -12,4 +12,4 @@ Copy a list or multiple paragraphs to clipboard (I've tried copying from txt, do
 
 In Smartcat interface, place cursor to the segment you want to start pasting from, and click the bookmark you've created.
 
-The pasted content won't be saved to your document unless you commit any editing in every segment you've pasted to.
+If you have not edited the segments you've pasted into before such pasting (at least by copying source to target) the pasted content won't be saved to your document unless you commit any editing in every segment affected.
