@@ -2,7 +2,7 @@
 
 To paste the clipboard content (multiple paragraphs or table cells) into multiple segments in Smartcat interface, create a bookmark in your Web browser (I've tested in Chrome only); enter any name for it.
 
-In URI field, enter the following code:
+In URL field, enter the following code:
 
 javascript:(function(){navigator.clipboard.readText().then(clipboardText=>{clipboardArray=clipboardText.split(/[\r\n]+/g);for(i=0;i<clipboardArray.length;i++){statement='document.activeElement.closest("tbody")'+'.nextElementSibling'.repeat(i)+'.getElementsByClassName("l-content-editor__view l-content-editor__view_editor")[1].innerText=clipboardArray[i]';eval(statement);}})})();
 
