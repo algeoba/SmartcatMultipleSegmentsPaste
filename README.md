@@ -4,7 +4,7 @@ To paste the clipboard content (multiple paragraphs or table cells) into multipl
 
 In URL field, enter the following code:
 
-javascript:(function(){navigator.clipboard.readText().then(clipboardText=>{clipboardArray=clipboardText.split(/[\r\n]+/g);for(i=0;i<clipboardArray.length;i++){statement='document.activeElement.closest("tbody")'+'.nextElementSibling'.repeat(i)+'.getElementsByClassName("l-content-editor__view l-content-editor__view_editor")[1].innerText=clipboardArray[i]';eval(statement);}})})();
+javascript:(function(){navigator.clipboard.readText().then(clipboardText=>{clipboardArray=clipboardText.split(/[\r\n]+/g);for(i=0;i<clipboardArray.length;i++){statement='document.activeElement.closest(&quot;tbody&quot;)'+'.nextElementSibling'.repeat(i)+'.getElementsByClassName(&quot;l-content-editor__view l-content-editor__view_editor&quot;)[1].innerText=clipboardArray[i]';eval(statement);}})})();
 
 Save to apply the changes.
 
