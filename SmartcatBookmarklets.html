@@ -1,0 +1,39 @@
+<html><h1>Bookmarklets for typical PEMT tasks</h1>
+<p>Since Smartcat uses a web-interface, you may automate some frequent PEMT tasks via quite simple <a href="https://en.wikipedia.org/wiki/Bookmarklet">bookmarklets</a>.
+<p>Below you may find several snippets I use when editing MT output for my projects with English as a target language.
+<p>All snippets are written from scratch while taking free online courses at <a href="https://www.w3schools.com/">w3schools</a>, which is both a comprehensive and novice-friendly portal.
+<p>To use the snippets, simply drag the bold links (subtitles) below and drop them on the bookmarks bar of your browser. 
+<p>I place these bookmarks in a separate folder of the bookmarks bar. To alter a bookmarklet name (you may assign any name you want), right-click on it and select Edit.
+<h2><a href="javascript:(function(){let currentSegment=document.activeElement;let selectionString=window.getSelection().toString();let selectionArray=selectionString.split(' ');let noCapitalization=['a','about','above','across','after','against','along','among','and','around','as','at','before','beside','besides','between','beyond','but','by','despite','down','during','except','excepting','excluding','for','from','in','including','inside','into','like','near','nearer','nearest','of','off','on','or','onto','out','outside','over','per','regarding','respecting','short','since','than','the','through','throughout','till','to','toward','towards','under','underneath','unlike','until','unto','up','upon','v.','versus','via','vs.','with','within','without'];let selectionRemade=selectionArray.map(item=>(noCapitalization.includes(item)==true)?item=item:item=item[0].toUpperCase()+item.slice(1)).join(%27 %27);let output=currentSegment.innerText.replace(selectionString,selectionRemade);currentSegment.innerText=output;})()">Selective Capitalization (Chicago)
+</a></h2>
+<p>Sometimes, MT engines do not recognize titles that require capitalization of content words (most projects I run imply Chicago style of capitalization). Selective using SHIFT+F3 may be tedious, especially if titles are long or they are in abundance. To avoid this, select the title to be capitalized and click the bookmarklet on the bookmarks bar.
+<h2><a href="javascript:(function(){let currentSegment=document.activeElement;let currentSegmentText=currentSegment.innerText;let selectionString=' '+window.getSelection().toString();let output=selectionString.substr(1,1).toUpperCase()+selectionString.slice(2)+', '+currentSegmentText.substr(0,1).toLowerCase()+currentSegmentText.slice(1).replace(selectionString,'');currentSegment.innerText=output;})()">Move Adverbial Forward
+</a></h2>
+<p>There are cases when I need to place a final-position adverbial phrase (conditional, temporal etc.) in the beginning of a sentence, for better text cohesion.
+<p>For example, I want the sentence 
+<pre>You may save your time with this bookmarklet.</pre>
+<p>to read as
+<pre>With this bookmarklet, you may save your time.</pre>
+<p>If I edit it manually, I need to (1) move the adverbial, (2) capitalize the first letter of it, (3) add a comma, (4) bring the first letter of the originally initial word to lowercase, and (5) delete a space left before trailing punctuation.
+<p>Or, I just highlight the adverbial and click this bookmarklet.
+<h2><a href="javascript:(function(){navigator.clipboard.readText().then(clipboardText=>{clipboardArray=clipboardText.split(/[\r\n]+/g);for(i=0;i<clipboardArray.length;i++){statement='document.activeElement.closest(&quot;tbody&quot;)'+'.nextElementSibling'.repeat(i)+'.getElementsByClassName(&quot;l-content-editor__view l-content-editor__view_editor&quot;)[1].innerText=clipboardArray[i]';eval(statement);}})})()">Paste Multiple Segments
+</a></h2>
+<p>If you need to paste multiple paragraphs or table cells from a reference material or user interface of another MT engine, into a series of segments of your Smartcat document (you may find description of this feature in this <a href="https://smartcat.com/community/post/1008855504">post</a>), just copy those paragraphs or cells to clipboard, place the cursor to the segment you want to start pasting from, and click this bookmarklet.
+<p>If you apply filtering to your Smartcat document, the data will be pasted into the filtered segments.
+<h2><a href="javascript:(function(){let currentSegment=document.activeElement;let currentSegmentText=currentSegment.innerText;let selectionString=window.getSelection().toString();let pattern = /\s/g;let result=selectionString.replace(',','.').replace(pattern,',');let output=currentSegmentText.replace(selectionString,result);currentSegment.innerText=output;})()">12 345,67 to 12,345.67
+</a></h2>
+<p>Combination of MT pre-translation and MT engines can lead to erroneous number formats (or erroneous numbers in fuzzy matches), so, you need to copy source to target and then modify the numbers in line with standard format. If so, highlight the number of 12 345,67 format and click this bookmarklet to bring the number to 12,345.67 format.
+<h2><a href="javascript:(function(){let currentSegment=document.activeElement;let currentSegmentText=currentSegment.innerText;let selectionString=window.getSelection().toString();let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];let selectionArray=selectionString.split(%27.%27);let day;(selectionArray[0].split(0,1)==0)?day=selectionArray[0].substr(1,1):day=selectionArray[0];let result=day+%27 %27+months[parseInt(selectionArray[1])-1]+%27 %27+selectionArray[2];let output=currentSegmentText.replace(selectionString,result);currentSegment.innerText=output;})()">
+01.01.2001 to 1 January 2001</a> and <a href="javascript:(function(){let currentSegment=document.activeElement;let currentSegmentText=currentSegment.innerText;let selectionString=window.getSelection().toString();let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];let selectionArray=selectionString.split(%27.%27);let day;(selectionArray[0].split(0,1)==0)?day=selectionArray[0].substr(1,1):day=selectionArray[0];let result=months[parseInt(selectionArray[1])-1]+%27 %27+day+%27, %27+selectionArray[2];let output=currentSegmentText.replace(selectionString,result);currentSegment.innerText=output;})()">01.01.2001 to January 1, 2001
+</a></h2>
+<p>Sometimes, MT does not pick up dates and I use these bookmarklets to convert the dates from 01.01.2001 format to 1 January 2001 or January 1, 2001 format (select the date and then click the appropriate bookmarklet).
+<h2>Important notes</h2>
+<h3>Security issues</h3>
+<p>The first time you try using a bookmarklet in the Smarcat interface you need to grant permission for the same after the browser pops a relevant prompt. Then, within the current session, you may use bookmarklets without any restrictions. 
+<h3>Saving data</h3>
+<p>Please keep in mind that altering a text with a bookmarklet won’t affect the data stored in the Smartcat system for your document unless you do some extra editing of every particular segment. 
+<p>If (after modification with a bookmarklet is applied), no more editing is required, I simply type the EQUAL sign within the segment and immediately delete the sign with the BACKSPACE key. 
+<p>If you don’t edit your segment after using a bookmarklet the changes won’t be stored in the system, even when you mark the segment as translated.
+<hr>
+<p>Looking for more ideas of automation, your snippets, and comments from JavaScript enthusiasts.
+</html>
